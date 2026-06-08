@@ -109,39 +109,30 @@ const SRS = {
     // Rules:
     // - First day ever: only new words (no review)
     // - Normal day: review all due words first, then fill up to dailyCount with new words
-    getTodayPlan(allWords, progress, source, dailyCount = 50) {
+    getTodayPlan(allWords, progress, source, dailyCount = 100) {
         const stats = Storage.getStats();
-        const lastStudyDate = stats.lastStudyDate;
         const today = Utils.today();
 
         // Get due words for review (all of them)
         const dueWords = this.getDueWords(progress, allWords, 999);
-        const reviewCount = dueWords.length;
 
-        // How many new words to add
+        // How many new words to add (fill remaining quota)
+        const reviewCount = Math.min(dueWords.length, dailyCount);
         let newCount = Math.max(0, dailyCount - reviewCount);
         
-        // Get new words
-        const wordsInProgress = Object.keys(progress);
-        const newWords = this.getNewWords(allWords, progress, wordsInProgress, newCount);
+        // Get new words (exclude already-studied words)
+        const studiedWords = Object.keys(progress);
+        const newWords = this.getNewWords(allWords, progress, studiedWords, newCount);
 
-        let plan = [];
+        // Build plan: review first, then fill with new
+        let plan = [
+            ...dueWords.slice(0, reviewCount).map(w => ({ ...w, type: 'review' })),
+            ...newWords.map(w => ({ ...w, type: 'new' }))
+        ];
 
-        if (!lastStudyDate || lastStudyDate !== today) {
-            // First session today (or first ever)
-            if (!lastStudyDate) {
-                // First day ever - only new words
-                plan = newWords.slice(0, dailyCount).map(w => ({ ...w, type: 'new' }));
-            } else {
-                // Normal day: review + new
-                plan = [
-                    ...dueWords.slice(0, reviewCount).map(w => ({ ...w, type: 'review' })),
-                    ...newWords.map(w => ({ ...w, type: 'new' }))
-                ];
-            }
-        } else {
-            // Already studied today - only reviews
-            plan = dueWords.slice(0, 50).map(w => ({ ...w, type: 'review' }));
+        // If nothing at all (all words mastered, no reviews due)
+        if (plan.length === 0) {
+            plan = [];
         }
 
         return {
@@ -149,7 +140,7 @@ const SRS = {
             reviewCount: plan.filter(w => w.type === 'review').length,
             newCount: plan.filter(w => w.type === 'new').length,
             totalDue: dueWords.length,
-            remainingNew: allWords.length - Object.keys(progress).length - wordsInProgress.length
+            remainingNew: allWords.length - Object.keys(progress).length
         };
     },
 

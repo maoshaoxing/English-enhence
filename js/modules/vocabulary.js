@@ -195,6 +195,21 @@ const VocabModule = {
                     <div id="vocab-calendar"></div>
                 </div>
 
+                <!-- 词汇视频课程 -->
+                <div class="card" style="margin-bottom: 16px; cursor: pointer; border-left: 3px solid var(--accent);"
+                    onclick="VocabModule.showVocabCourse()">
+                    <div style="display:flex;align-items:center;gap:12px;">
+                        <div style="font-size:2.2rem;">📺</div>
+                        <div>
+                            <div style="font-weight:700;margin-bottom:2px;">6600词雅思词汇带背课程</div>
+                            <div style="font-size:var(--text-xs);color:var(--text-secondary);">
+                                lexi学姐教雅思 · 22章 · 全新例句 · 刷词工具
+                            </div>
+                        </div>
+                        <span style="margin-left:auto;color:var(--accent);font-size:var(--text-xs);">点击观看 →</span>
+                    </div>
+                </div>
+
                 <!-- Ebbinghaus Schedule -->
                 <div class="glass-card" style="margin-top: 16px;">
                     <h3 style="font-size: var(--text-sm); font-weight: 700; margin-bottom: 8px; color: var(--text-secondary);">
@@ -641,6 +656,75 @@ const VocabModule = {
                     <div class="empty-state-icon">✅</div>
                     <h2 class="empty-state-title">${msg}</h2>
                     <button class="btn btn-primary" onclick="VocabModule.render()">返回</button>
+                </div>
+            </div>
+        `;
+    },
+
+    // Show vocabulary course video
+    showVocabCourse() {
+        const content = document.getElementById('app-content');
+        content.innerHTML = `
+            <div class="page-section fade-up" style="max-width:900px;margin:0 auto;">
+                <div style="margin-bottom:16px;">
+                    <button class="btn btn-ghost" onclick="VocabModule.render()">← 返回单词</button>
+                </div>
+
+                <div class="card" style="overflow:hidden;padding:0;margin-bottom:20px;">
+                    <div style="position:relative;padding-bottom:56.25%;height:0;background:#000;">
+                        <iframe src="https://player.bilibili.com/player.html?bvid=BV1yyGy6PELM"
+                            style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;"
+                            allow="autoplay;encrypted-media" allowfullscreen scrolling="no">
+                        </iframe>
+                    </div>
+                    <div style="padding:20px;">
+                        <h2 style="font-size:var(--text-xl);font-weight:700;margin-bottom:6px;">📺 6600词雅思词汇带背课程</h2>
+                        <p style="font-size:var(--text-sm);color:var(--text-secondary);margin-bottom:16px;">
+                            lexi学姐教雅思 · 22个章节 · 全新配套例句 · 刷词工具
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card fade-in" style="margin-bottom:20px;">
+                    <h3 style="font-weight:700;margin-bottom:12px;">📋 22章课程目录</h3>
+                    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:8px;">
+                        ${[
+                            '第22章 时间日期','第12章 饮食健康','第21章 身心健康','第19章 社会角色',
+                            '第20章 行为动作','第8章 语言演化','第5章 学校教育','第6章 科技发明',
+                            '第7章 文化历史','第9章 娱乐运动','第11章 时尚潮流','第15章 国家政府',
+                            '第17章 法律法规','第16章 社会经济','第18章 沙场争锋','第14章 交通旅行',
+                            '第13章 建筑场所','第10章 物质材料','第2章 植物研究','第3章 动物保护',
+                            '第1章 自然地理','第4章 太空探索'
+                        ].map((ch, i) => `
+                            <div style="padding:8px 12px;background:var(--bg-glass);border-radius:var(--radius-sm);
+                                font-size:var(--text-sm);display:flex;align-items:center;gap:8px;">
+                                <span style="color:var(--accent);font-weight:700;font-size:var(--text-xs);">${i+1}</span>
+                                ${ch}
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <div class="card card-glow" style="text-align:center;">
+                    <h3 style="font-weight:700;margin-bottom:8px;">💡 课程特点</h3>
+                    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:12px;">
+                        <div style="padding:12px;background:var(--bg-glass);border-radius:var(--radius-md);">
+                            <div style="font-size:1.5rem;margin-bottom:4px;">🔤</div>
+                            <div style="font-weight:600;font-size:var(--text-sm);">每个单词拆解讲解</div>
+                        </div>
+                        <div style="padding:12px;background:var(--bg-glass);border-radius:var(--radius-md);">
+                            <div style="font-size:1.5rem;margin-bottom:4px;">📝</div>
+                            <div style="font-weight:600;font-size:var(--text-sm);">全新配套例句</div>
+                        </div>
+                        <div style="padding:12px;background:var(--bg-glass);border-radius:var(--radius-md);">
+                            <div style="font-size:1.5rem;margin-bottom:4px;">🏷️</div>
+                            <div style="font-weight:600;font-size:var(--text-sm);">核心/高频/低频标签</div>
+                        </div>
+                        <div style="padding:12px;background:var(--bg-glass);border-radius:var(--radius-md);">
+                            <div style="font-size:1.5rem;margin-bottom:4px;">🛠️</div>
+                            <div style="font-weight:600;font-size:var(--text-sm);">开源刷词神器</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         `;
