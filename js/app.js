@@ -165,7 +165,7 @@ const App = {
                         <div class="module-card-icon">🎧</div>
                         <div class="module-card-title">听力训练</div>
                         <div class="module-card-desc">沉浸式视频 + 字幕 + 理解题 + 听写</div>
-                        <span class="tag" style="margin-top: 12px;">15 个课程</span>
+                        <span class="tag" style="margin-top: 12px;">96 集播客</span>
                     </div>
                     <div class="module-card" onclick="Router.navigate('speaking')">
                         <div class="module-card-icon">🗣️</div>
