@@ -60,7 +60,7 @@ const Storage = {
     },
 
     getWordProgressAll() {
-        const sources = ['basic', 'intermediate', 'advanced', 'cet4', 'cet6', 'custom'];
+        const sources = ['basic', 'intermediate', 'advanced', 'cet4', 'cet6', 'custom-ielts', 'custom'];
         let all = {};
         sources.forEach(s => {
             Object.assign(all, this.getWordProgress(s));

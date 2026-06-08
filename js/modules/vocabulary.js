@@ -9,7 +9,7 @@ const VocabModule = {
     sessionIndex: 0,
     revealed: false,
     isActive: false,
-    allSources: ['basic', 'intermediate', 'advanced', 'cet4', 'cet6', 'custom'],
+    allSources: ['basic', 'intermediate', 'advanced', 'cet4', 'cet6', 'custom-ielts', 'custom'],
 
     // Initialize
     init() {

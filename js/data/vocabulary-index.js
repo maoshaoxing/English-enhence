@@ -7,6 +7,7 @@ const VOCAB_DATA = {
     advanced: typeof VOCAB_ADVANCED !== 'undefined' ? VOCAB_ADVANCED : [],
     cet4: typeof VOCAB_CET4 !== 'undefined' ? VOCAB_CET4 : [],
     cet6: typeof VOCAB_CET6 !== 'undefined' ? VOCAB_CET6 : [],
+    'custom-ielts': typeof VOCAB_CUSTOM_IELTS !== 'undefined' ? VOCAB_CUSTOM_IELTS : [],
     custom: []  // User's own words - filled dynamically
 };
 
@@ -17,6 +18,7 @@ const VOCAB_SOURCES = {
     advanced: { label: '雅思高级', emoji: '⭐⭐⭐', desc: '雅思高级学术词汇' },
     cet4: { label: '四级词汇', emoji: '📘', desc: '大学英语四级词汇 (3585词)' },
     cet6: { label: '六级词汇', emoji: '📕', desc: '大学英语六级词汇 (729词)' },
+    'custom-ielts': { label: '雅思主题词', emoji: '💎', desc: '按主题分类的雅思词汇 (1127词)' },
     custom: { label: '我的词汇', emoji: '📝', desc: '自定义词汇' }
 };
 

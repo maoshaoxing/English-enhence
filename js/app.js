@@ -59,7 +59,7 @@ const App = {
         }
 
         // Get vocabulary progress (ALL sources)
-        const allSources = ['basic', 'intermediate', 'advanced', 'cet4', 'cet6', 'custom'];
+        const allSources = ['basic', 'intermediate', 'advanced', 'cet4', 'cet6', 'custom-ielts', 'custom'];
         let totalWordsLearned = 0;
         let totalMastered = 0;
         
