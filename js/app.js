@@ -31,6 +31,11 @@ const App = {
         // Set up keyboard shortcuts globally
         this.setupKeyboardShortcuts();
 
+        // Hide loader
+        setTimeout(() => {
+            document.getElementById('app-loader')?.classList.add('hide');
+        }, 300);
+
         // Navigate to dashboard
         Router.navigate('dashboard');
     },
@@ -70,136 +75,127 @@ const App = {
         });
 
         content.innerHTML = `
-            <div class="page-section page-enter">
-                <div class="page-header">
-                    <h1 class="page-title" style="font-size:var(--text-4xl);">🎯 IELTS 7.0</h1>
-                    <p class="page-subtitle" style="font-size:var(--text-lg);">
-                        一年冲刺雅思 7.0 · ${streak > 0 ? `🔥 已连续学习 ${streak} 天` : '从今天开始！'}
-                    </p>
-                </div>
-
-                <!-- Streak & Check-in -->
-                <div style="display:flex; gap:16px; align-items:center; justify-content:center; margin-bottom:32px; flex-wrap:wrap;">
-                    <div class="streak-display">
-                        <div class="streak-fire ${streak > 0 ? 'flame-effect' : ''}">🔥</div>
-                        <div>
-                            <div class="streak-number">${streak}</div>
-                            <div class="streak-label">连续学习天数</div>
+            <div class="fade-in">
+                <!-- Hero -->
+                <div class="hero">
+                    <div class="hero-badge">${streak > 0 ? `🔥 连续 ${streak} 天` : '🎓 从今天开始'}</div>
+                    <h1 class="hero-title">四六级雅思宝典</h1>
+                    <p class="hero-subtitle">每天 ${dailyNew} 词，艾宾浩斯科学复习，一年冲刺雅思 7.0</p>
+                    
+                    <div class="hero-stats">
+                        <div class="hero-stat">
+                            <div class="hero-stat-num" style="color:var(--accent);">${totalWordsLearned}</div>
+                            <div class="hero-stat-label">已学单词</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-num" style="color:var(--success);">${totalMastered}</div>
+                            <div class="hero-stat-label">已掌握</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-num" style="color:var(--gold);">${checkins.length}</div>
+                            <div class="hero-stat-label">打卡天</div>
                         </div>
                     </div>
-                    <button class="btn ${checkedIn ? 'btn-secondary' : 'btn-gold'} btn-lg" onclick="App.checkin(this)">
-                        ${checkedIn ? '✅ 今日已打卡' : '📅 今日打卡'}
-                    </button>
-                </div>
 
-                <!-- Stats Grid -->
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-icon">📖</div>
-                        <div class="stat-value" style="color:var(--accent-primary)">${totalWordsLearned}</div>
-                        <div class="stat-label">已学单词</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon">✅</div>
-                        <div class="stat-value" style="color:var(--success)">${totalMastered}</div>
-                        <div class="stat-label">已掌握单词</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon">📅</div>
-                        <div class="stat-value" style="color:var(--gold)">${checkins.length}</div>
-                        <div class="stat-label">总打卡天数</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon">🎯</div>
-                        <div class="stat-value" style="color:var(--info)">7.0</div>
-                        <div class="stat-label">目标分数</div>
+                    <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+                        <button class="btn btn-primary btn-lg" onclick="Router.navigate('vocabulary')">🚀 开始学习</button>
+                        <button class="btn ${checkedIn ? 'btn-secondary' : 'btn-gold'} btn-lg" onclick="App.checkin(this)">
+                            ${checkedIn ? '✅ 今日已打卡' : '📅 今日打卡'}
+                        </button>
                     </div>
                 </div>
 
-                <!-- Daily Goal -->
-                <div class="glass-card" style="margin-bottom:24px;">
-                    <h3 style="font-weight:700; margin-bottom:12px;">🎯 今日目标</h3>
-                    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(140px,1fr)); gap:12px;">
+                <!-- Streak Bar -->
+                ${streak > 0 ? `
+                <div class="streak-bar" style="margin-bottom:28px;">
+                    <div class="streak-fire ${streak > 0 ? 'fire-glow' : ''}">🔥</div>
+                    <div>
+                        <div class="streak-num">${streak} 天</div>
+                        <div style="font-size:var(--text-sm); color:var(--text-secondary);">连续学习记录</div>
+                    </div>
+                </div>
+                ` : ''}
+
+                <!-- Today's Goal -->
+                <div class="card" style="margin-bottom:28px;">
+                    <div class="section-header" style="margin-bottom:16px;">
+                        <h2 class="section-title">🎯 今日目标</h2>
+                    </div>
+                    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(120px,1fr)); gap:16px;">
                         <div>
-                            <div style="font-size:var(--text-xs); color:var(--text-secondary); margin-bottom:4px;">新词</div>
-                            <div style="font-size:var(--text-2xl); font-weight:800; color:var(--accent-primary);">
-                                ${stats.todayWords || 0} <span style="font-size:var(--text-sm); color:var(--text-secondary);">/ ${dailyNew}</span>
+                            <div style="font-size:var(--text-xs); color:var(--text-secondary); margin-bottom:4px;">新词进度</div>
+                            <div style="font-size:var(--text-2xl); font-weight:900; color:var(--accent);">
+                                ${stats.todayWords || 0} <span style="font-size:var(--text-sm); color:var(--text-secondary); font-weight:500;">/ ${dailyNew}</span>
                             </div>
                         </div>
                         <div>
-                            <div style="font-size:var(--text-xs); color:var(--text-secondary); margin-bottom:4px;">复习</div>
-                            <div style="font-size:var(--text-2xl); font-weight:800; color:var(--gold);">
-                                ${stats.todayReviewed || 0}
-                            </div>
+                            <div style="font-size:var(--text-xs); color:var(--text-secondary); margin-bottom:4px;">今日复习</div>
+                            <div style="font-size:var(--text-2xl); font-weight:900; color:var(--gold);">${stats.todayReviewed || 0}</div>
                         </div>
                         <div>
-                            <div style="font-size:var(--text-xs); color:var(--text-secondary); margin-bottom:4px;">掌握率</div>
-                            <div style="font-size:var(--text-2xl); font-weight:800; color:var(--success);">
+                            <div style="font-size:var(--text-xs); color:var(--text-secondary); margin-bottom:4px;">总掌握率</div>
+                            <div style="font-size:var(--text-2xl); font-weight:900; color:var(--success);">
                                 ${totalWordsLearned > 0 ? Math.round(totalMastered/totalWordsLearned*100) : 0}%
                             </div>
                         </div>
                     </div>
-                    <div class="progress-bar" style="margin-top:12px;">
+                    <div class="progress-track" style="margin-top:16px;">
                         <div class="progress-fill" style="width:${dailyNew > 0 ? Math.min(100, (stats.todayWords||0)/dailyNew*100) : 0}%"></div>
                     </div>
                 </div>
 
                 <!-- Module Cards -->
-                <h3 style="font-weight:700; margin-bottom:16px;">📚 学习模块</h3>
+                <div class="section-header">
+                    <h2 class="section-title">📚 学习模块</h2>
+                </div>
                 <div class="module-grid">
                     <div class="module-card" onclick="Router.navigate('vocabulary')">
                         <div class="module-card-icon">📖</div>
                         <div class="module-card-title">单词背诵</div>
-                        <div class="module-card-desc">不背单词风格的间隔重复学习，三档难度</div>
-                        <div style="display:flex; gap:4px;">
-                            <span class="badge badge-basic">基础 ${Object.keys(basicProgress).length}</span>
-                            <span class="badge badge-intermediate">中档 ${Object.keys(intermediateProgress).length}</span>
-                            <span class="badge badge-advanced">困难 ${Object.keys(advancedProgress).length}</span>
+                        <div class="module-card-desc">不背单词风格 · 艾宾浩斯科学复习</div>
+                        <div style="margin-top:12px; display:flex; gap:4px; flex-wrap:wrap;">
+                            <span class="badge-blue">基础</span>
+                            <span class="badge-gold">中档</span>
+                            <span class="badge-rose">高级</span>
+                            <span class="badge-purple">CET4/6</span>
+                            <span class="badge-green">主题词</span>
                         </div>
                     </div>
                     <div class="module-card" onclick="Router.navigate('listening')">
                         <div class="module-card-icon">🎧</div>
                         <div class="module-card-title">听力训练</div>
-                        <div class="module-card-desc">沉浸式视频听力，字幕+理解题+听写模式</div>
-                        <span class="badge badge-success">${stats.moduleProgress.listening.completed || 0} 完成</span>
+                        <div class="module-card-desc">沉浸式视频 + 字幕 + 理解题 + 听写</div>
+                        <span class="tag" style="margin-top: 12px;">15 个课程</span>
                     </div>
                     <div class="module-card" onclick="Router.navigate('speaking')">
                         <div class="module-card-icon">🗣️</div>
                         <div class="module-card-title">口语练习</div>
-                        <div class="module-card-desc">三部分口语题库，计时训练+范文参考</div>
-                        <span class="badge badge-success">${stats.moduleProgress.speaking.practiced || 0} 练习</span>
+                        <div class="module-card-desc">Part 1/2/3 题库 · 计时训练 · 范文参考</div>
+                        <span class="tag" style="margin-top: 12px;">40 个话题</span>
                     </div>
                     <div class="module-card" onclick="Router.navigate('reading')">
                         <div class="module-card-icon">📚</div>
                         <div class="module-card-title">阅读理解</div>
-                        <div class="module-card-desc">雅思阅读真题练习，分屏阅读+自动批改</div>
-                        <span class="badge badge-success">${stats.moduleProgress.reading.completed || 0} 完成</span>
+                        <div class="module-card-desc">分屏阅读 · 自动批改 · 计时训练</div>
+                        <span class="tag" style="margin-top: 12px;">10 篇文章</span>
                     </div>
                     <div class="module-card" onclick="Router.navigate('writing')">
                         <div class="module-card-icon">✍️</div>
                         <div class="module-card-title">写作训练</div>
-                        <div class="module-card-desc">Task 1+2 写作思路框架+高分范文</div>
-                        <span class="badge badge-success">${stats.moduleProgress.writing.practiced || 0} 练习</span>
+                        <div class="module-card-desc">Task 1/2 · 框架引导 · 高分范文</div>
+                        <span class="tag" style="margin-top: 12px;">10 个题目</span>
                     </div>
-                    <div class="module-card" onclick="VocabModule.renderReview()">
-                        <div class="module-card-icon">🔄</div>
-                        <div class="module-card-title">错题复习</div>
-                        <div class="module-card-desc">集中攻克难点词汇，针对性复习</div>
-                        <span class="badge badge-advanced">复习模式</span>
+                    <div class="module-card" onclick="Router.navigate('settings')">
+                        <div class="module-card-icon">⚙️</div>
+                        <div class="module-card-title">学习计划</div>
+                        <div class="module-card-desc">词库选择 · 每日词量 · 自定义导入</div>
+                        <span class="tag" style="margin-top: 12px;">个性化配置</span>
                     </div>
                 </div>
 
-                <!-- Quick Start -->
-                <div style="text-align:center; margin-top:32px;">
-                    <button class="btn btn-primary btn-lg" onclick="Router.navigate('vocabulary')" 
-                        style="font-size:var(--text-lg); padding:16px 40px;">
-                        🚀 开始今日学习
-                    </button>
-                </div>
-
-                <!-- Daily Tips -->
-                <div class="glass-card" style="margin-top:24px;">
-                    <h3 style="font-weight:700; margin-bottom:8px;">💡 每日雅思小贴士</h3>
+                <!-- Tips -->
+                <div class="card" style="margin-top:28px;">
+                    <h3 style="font-weight:700; margin-bottom:8px;">💡 ${Utils.randomItem(['雅思小贴士','学习技巧','今日金句'])}</h3>
                     <p style="font-size:var(--text-sm); color:var(--text-secondary); line-height:1.7;">
                         ${this.getDailyTip()}
                     </p>
