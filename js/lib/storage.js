@@ -88,7 +88,7 @@ const Storage = {
             streakDays: 0,
             moduleProgress: {
                 vocabulary: { learned: 0, total: 938 },
-                listening: { completed: 0, total: 15 },
+                listening: { completed: 0, total: 96 },
                 speaking: { practiced: 0, total: 40 },
                 reading: { completed: 0, total: 10 },
                 writing: { practiced: 0, total: 10 }
