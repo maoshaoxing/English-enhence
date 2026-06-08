@@ -55,3 +55,25 @@ cd ielts7 && python -m http.server 3000
 - 对接真实的 IELTS 听力真题音频
 - 添加用户注册/云同步功能
 - 接入 AI 批改口语/写作
+
+---
+
+## 🚀 部署到 GitHub Pages
+
+在终端执行以下命令（项目已初始化好 git）：
+
+```bash
+cd C:\Users\29369\WorkBuddy\2026-06-08-19-42-44\ielts7
+# 连接你的 GitHub 仓库（先去 github.com 创建 ielts7 仓库，不要勾 README）
+git remote add origin https://github.com/maoshaoxing/ielts7.git
+git push -u origin master
+```
+然后去 GitHub 仓库 Settings → Pages → 选 master 分支 → 保存
+
+## 💡 本次新增功能
+- ✅ **CET-4 词库** (3585词) + **CET-6 词库** (729词)
+- ✅ **艾宾浩斯遗忘曲线**复习（1→2→4→7→15→30→60→120天）
+- ✅ **每日 100 词** 可自定义（10~200词滑块调节）
+- ✅ **多词库选择** — 单词页和「计划」页面配置
+- ✅ **自定义词汇导入** — 在「计划」页面导入你自己的词汇
+- ✅ **独立「学习计划」页面** ⚙️
