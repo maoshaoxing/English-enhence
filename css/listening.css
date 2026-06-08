@@ -1,0 +1,59 @@
+/* ============================================
+   Listening Module Styles
+   ============================================ */
+
+.listening-container { max-width: 800px; margin: 0 auto; }
+
+.listening-categories { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-bottom: 24px; }
+
+.listening-cat-btn { padding: 8px 18px; border-radius: var(--radius-full); font-size: var(--text-sm); font-weight: 500; color: var(--text-secondary); background: var(--bg-card); border: 1px solid var(--border-color); transition: all var(--transition-fast); cursor: pointer; }
+.listening-cat-btn.active { background: var(--accent-gradient); color: white; border-color: transparent; }
+.listening-cat-btn:hover:not(.active) { background: var(--bg-card-hover); }
+
+.listening-grid { display: grid; gap: 16px; }
+
+.listening-item { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 20px; cursor: pointer; transition: all var(--transition-base); display: flex; gap: 16px; align-items: flex-start; }
+.listening-item:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: rgba(255,255,255,0.12); }
+
+.listening-thumb { width: 120px; height: 68px; border-radius: var(--radius-sm); background: var(--bg-glass); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 2rem; overflow: hidden; }
+.listening-thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+.listening-info { flex: 1; min-width: 0; }
+.listening-title { font-weight: 700; margin-bottom: 4px; font-size: var(--text-base); }
+.listening-meta { display: flex; gap: 12px; font-size: var(--text-xs); color: var(--text-secondary); }
+.listening-tags { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
+
+/* --- Listening Player --- */
+.listening-player { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-xl); overflow: hidden; }
+.listening-video-wrap { position: relative; padding-bottom: 56.25%; height: 0; background: #000; }
+.listening-video-wrap iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+.listening-player-body { padding: 24px; }
+.listening-player-title { font-size: var(--text-xl); font-weight: 700; margin-bottom: 4px; }
+.listening-player-source { font-size: var(--text-sm); color: var(--text-secondary); margin-bottom: 16px; }
+
+.listening-player-actions { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+.listening-mode-btn { padding: 6px 14px; border-radius: var(--radius-full); font-size: var(--text-xs); font-weight: 500; color: var(--text-secondary); background: var(--bg-card); border: 1px solid var(--border-color); cursor: pointer; transition: all var(--transition-fast); }
+.listening-mode-btn.active { background: var(--accent-primary); color: white; border-color: transparent; }
+
+.listening-transcript { max-height: 300px; overflow-y: auto; background: var(--bg-card); border-radius: var(--radius-md); padding: 16px; margin-bottom: 16px; }
+.listening-line { padding: 6px 0; font-size: var(--text-sm); line-height: 1.7; cursor: pointer; border-radius: 4px; padding: 4px 8px; transition: background var(--transition-fast); }
+.listening-line:hover { background: var(--bg-glass); }
+.listening-line.active { background: rgba(108,99,255,0.15); }
+.listening-line-en { color: var(--text-primary); }
+.listening-line-zh { color: var(--text-secondary); font-size: var(--text-xs); }
+
+.listening-quiz { margin-top: 16px; }
+.listening-quiz-item { margin-bottom: 16px; }
+.listening-quiz-q { font-weight: 600; margin-bottom: 8px; font-size: var(--text-sm); }
+.listening-quiz-options { display: flex; flex-direction: column; gap: 6px; }
+.listening-quiz-opt { padding: 10px 14px; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-sm); font-size: var(--text-sm); cursor: pointer; transition: all var(--transition-fast); text-align: left; }
+.listening-quiz-opt:hover { background: var(--bg-card-hover); }
+.listening-quiz-opt.correct { border-color: var(--success); background: rgba(52,211,153,0.1); color: var(--success); }
+.listening-quiz-opt.wrong { border-color: var(--danger); background: rgba(248,113,113,0.1); color: var(--danger); }
+
+@media (max-width: 600px) {
+    .listening-item { flex-direction: column; }
+    .listening-thumb { width: 100%; height: 140px; }
+    .listening-player-body { padding: 16px; }
+}

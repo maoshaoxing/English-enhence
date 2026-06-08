@@ -1,0 +1,24 @@
+/* Speaking Module Styles */
+.speaking-container { max-width: 720px; margin: 0 auto; }
+.speaking-part-selector { display: flex; gap: 8px; justify-content: center; margin-bottom: 24px; }
+.speaking-part-btn { padding: 8px 20px; border-radius: var(--radius-full); font-size: var(--text-sm); font-weight: 500; color: var(--text-secondary); background: var(--bg-card); border: 1px solid var(--border-color); cursor: pointer; transition: all var(--transition-fast); }
+.speaking-part-btn.active { background: var(--accent-gradient); color: white; border-color: transparent; }
+.speaking-part-btn:hover:not(.active) { background: var(--bg-card-hover); }
+
+.speaking-topic-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-xl); padding: 32px; text-align: center; margin-bottom: 16px; }
+.speaking-topic-label { font-size: var(--text-sm); color: var(--text-secondary); margin-bottom: 8px; }
+.speaking-topic-text { font-size: var(--text-lg); font-weight: 600; line-height: 1.6; margin-bottom: 24px; }
+.speaking-timer { font-family: var(--font-mono); font-size: 3rem; font-weight: 800; margin-bottom: 24px; color: var(--accent-primary); }
+.speaking-timer.warning { color: var(--danger); animation: pulse 1s ease infinite; }
+
+.speaking-controls { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.speaking-sample { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 24px; margin-top: 16px; }
+.speaking-sample-title { font-weight: 700; margin-bottom: 8px; color: var(--gold); }
+.speaking-sample-text { font-size: var(--text-sm); line-height: 1.8; color: var(--text-secondary); }
+.speaking-vocab-list { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px; }
+.speaking-vocab-tag { padding: 4px 10px; background: rgba(108,99,255,0.1); border-radius: var(--radius-full); font-size: var(--text-xs); color: var(--accent-secondary); }
+
+@media (max-width: 480px) {
+    .speaking-topic-card { padding: 20px; }
+    .speaking-timer { font-size: 2.2rem; }
+}

@@ -1,0 +1,25 @@
+/* Reading Module Styles */
+.reading-container { max-width: 900px; margin: 0 auto; }
+.reading-select { width: 100%; padding: 10px 16px; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); color: var(--text-primary); font-size: var(--text-sm); margin-bottom: 20px; cursor: pointer; }
+
+.reading-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; min-height: 500px; }
+.reading-passage { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 24px; overflow-y: auto; max-height: 70vh; }
+.reading-passage-title { font-size: var(--text-lg); font-weight: 700; margin-bottom: 16px; }
+.reading-passage-text { font-size: var(--text-sm); line-height: 1.9; color: var(--text-secondary); }
+.reading-passage-text p { margin-bottom: 12px; }
+
+.reading-questions { display: flex; flex-direction: column; gap: 12px; }
+.reading-q-item { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 16px; }
+.reading-q-num { font-size: var(--text-xs); color: var(--text-tertiary); margin-bottom: 4px; font-weight: 600; }
+.reading-q-text { font-size: var(--text-sm); margin-bottom: 8px; line-height: 1.5; }
+.reading-q-options { display: flex; flex-direction: column; gap: 4px; }
+.reading-q-opt { padding: 8px 12px; border-radius: var(--radius-sm); font-size: var(--text-sm); cursor: pointer; transition: all var(--transition-fast); background: var(--bg-glass); border: 1px solid transparent; text-align: left; }
+.reading-q-opt:hover { background: var(--bg-card-hover); }
+.reading-q-opt.selected { border-color: var(--accent-primary); background: rgba(108,99,255,0.1); }
+.reading-q-opt.correct { border-color: var(--success); background: rgba(52,211,153,0.1); color: var(--success); }
+.reading-q-opt.wrong { border-color: var(--danger); background: rgba(248,113,113,0.1); color: var(--danger); }
+
+@media (max-width: 768px) {
+    .reading-layout { grid-template-columns: 1fr; }
+    .reading-passage { max-height: 40vh; }
+}

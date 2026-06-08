@@ -1,0 +1,379 @@
+/* ============================================
+   Vocabulary Module Styles
+   ============================================ */
+
+.vocab-container {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+/* --- Progress Summary --- */
+.vocab-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.vocab-summary-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 16px;
+    text-align: center;
+}
+
+.vocab-summary-value {
+    font-size: var(--text-2xl);
+    font-weight: 800;
+    margin-bottom: 4px;
+}
+
+.vocab-summary-label {
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+}
+
+/* --- Word Card (不背单词风格) --- */
+.word-card-container {
+    perspective: 1200px;
+    margin-bottom: 20px;
+}
+
+.word-card {
+    position: relative;
+    width: 100%;
+    min-height: 360px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    padding: 40px 32px;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    user-select: none;
+}
+
+.word-card:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: var(--shadow-md);
+}
+
+/* --- Front of card (word displayed) --- */
+.word-display {
+    transition: all var(--transition-slow);
+}
+
+.word-text {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, var(--text-primary) 30%, var(--accent-primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.word-phonetic {
+    font-family: var(--font-mono);
+    font-size: var(--text-lg);
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+}
+
+.word-level-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
+    font-weight: 600;
+}
+
+/* --- Hint text before reveal --- */
+.word-hint {
+    margin-top: 32px;
+    font-size: var(--text-sm);
+    color: var(--text-tertiary);
+    opacity: 0.6;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* --- Revealed content --- */
+.word-revealed {
+    animation: fadeIn 0.4s ease;
+    width: 100%;
+}
+
+.word-meaning {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 20px;
+    padding: 12px 20px;
+    background: rgba(251, 191, 36, 0.08);
+    border-radius: var(--radius-md);
+    display: inline-block;
+}
+
+.word-examples {
+    text-align: left;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.word-example {
+    padding: 10px 14px;
+    margin-bottom: 8px;
+    background: var(--bg-glass);
+    border-radius: var(--radius-sm);
+    border-left: 3px solid var(--accent-primary);
+    font-size: var(--text-sm);
+    line-height: 1.6;
+}
+
+.word-example-en {
+    color: var(--text-primary);
+    margin-bottom: 2px;
+}
+
+.word-example-zh {
+    color: var(--text-secondary);
+    font-size: var(--text-xs);
+}
+
+.word-memory-tip {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 10px 14px;
+    background: rgba(108, 99, 255, 0.08);
+    border-radius: var(--radius-sm);
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    width: 100%;
+}
+
+.word-memory-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+/* --- Action Buttons (认识/模糊/不认识) --- */
+.word-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 20px;
+    animation: fadeIn 0.3s ease;
+}
+
+.word-action-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 14px 24px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+    background: var(--bg-card);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    min-width: 100px;
+}
+
+.word-action-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.word-action-btn .action-icon {
+    font-size: 1.8rem;
+    margin-bottom: 2px;
+}
+
+.word-action-btn .action-label {
+    font-size: var(--text-sm);
+    font-weight: 600;
+}
+
+.word-action-btn .action-sub {
+    font-size: var(--text-xs);
+    color: var(--text-tertiary);
+}
+
+.word-action-btn.btn-know {
+    border-color: rgba(52, 211, 153, 0.3);
+    color: var(--success);
+}
+
+.word-action-btn.btn-know:hover {
+    background: rgba(52, 211, 153, 0.1);
+    border-color: var(--success);
+}
+
+.word-action-btn.btn-unsure {
+    border-color: rgba(251, 191, 36, 0.3);
+    color: var(--warning);
+}
+
+.word-action-btn.btn-unsure:hover {
+    background: rgba(251, 191, 36, 0.1);
+    border-color: var(--warning);
+}
+
+.word-action-btn.btn-dontknow {
+    border-color: rgba(248, 113, 113, 0.3);
+    color: var(--danger);
+}
+
+.word-action-btn.btn-dontknow:hover {
+    background: rgba(248, 113, 113, 0.1);
+    border-color: var(--danger);
+}
+
+/* --- Progress during session --- */
+.session-progress {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.session-progress-bar {
+    flex: 1;
+    height: 4px;
+    background: var(--bg-card);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.session-progress-fill {
+    height: 100%;
+    background: var(--accent-gradient);
+    border-radius: 2px;
+    transition: width var(--transition-slow);
+}
+
+.session-progress-text {
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+    white-space: nowrap;
+    font-weight: 500;
+}
+
+/* --- Session Stats (after completing plan) --- */
+.session-stats {
+    text-align: center;
+    padding: 40px 24px;
+}
+
+.session-stats-icon {
+    font-size: 4rem;
+    margin-bottom: 16px;
+}
+
+.session-stats-title {
+    font-size: var(--text-2xl);
+    font-weight: 800;
+    margin-bottom: 24px;
+}
+
+.session-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    max-width: 400px;
+    margin: 0 auto 24px;
+}
+
+.session-stat-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 16px;
+}
+
+.session-stat-value {
+    font-size: var(--text-2xl);
+    font-weight: 800;
+    margin-bottom: 2px;
+}
+
+.session-stat-label {
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+}
+
+/* --- Error book page --- */
+.error-book-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.error-book-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+}
+
+.error-book-item:hover {
+    background: var(--bg-card-hover);
+}
+
+.error-book-word {
+    font-weight: 600;
+    font-size: var(--text-base);
+}
+
+.error-book-count {
+    font-size: var(--text-xs);
+    color: var(--danger);
+    padding: 2px 8px;
+    background: rgba(248, 113, 113, 0.1);
+    border-radius: var(--radius-full);
+}
+
+/* --- Responsive --- */
+@media (max-width: 480px) {
+    .word-text {
+        font-size: 2.2rem;
+    }
+
+    .word-meaning {
+        font-size: var(--text-xl);
+    }
+
+    .word-actions {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .word-action-btn {
+        flex-direction: row;
+        padding: 12px 20px;
+        min-width: unset;
+        width: 100%;
+    }
+
+    .word-card {
+        min-height: 300px;
+        padding: 24px 20px;
+    }
+
+    .session-stats-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,32 @@
+/* Writing Module Styles */
+.writing-container { max-width: 720px; margin: 0 auto; }
+.writing-task-selector { display: flex; gap: 8px; justify-content: center; margin-bottom: 24px; }
+.writing-task-btn { padding: 8px 20px; border-radius: var(--radius-full); font-size: var(--text-sm); font-weight: 500; color: var(--text-secondary); background: var(--bg-card); border: 1px solid var(--border-color); cursor: pointer; transition: all var(--transition-fast); }
+.writing-task-btn.active { background: var(--accent-gradient); color: white; border-color: transparent; }
+.writing-task-btn:hover:not(.active) { background: var(--bg-card-hover); }
+
+.writing-topic-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-xl); padding: 28px; margin-bottom: 16px; }
+.writing-topic-label { font-size: var(--text-sm); color: var(--text-secondary); margin-bottom: 8px; }
+.writing-topic-text { font-size: var(--text-lg); font-weight: 600; line-height: 1.6; margin-bottom: 16px; }
+.writing-topic-hint { font-size: var(--text-sm); color: var(--text-tertiary); font-style: italic; }
+
+.writing-timer-bar { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+
+.writing-framework { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 20px; margin-bottom: 16px; }
+.writing-framework-title { font-weight: 700; margin-bottom: 12px; color: var(--accent-primary); }
+.writing-framework-step { padding: 8px 0; border-bottom: 1px solid var(--border-color); font-size: var(--text-sm); }
+.writing-framework-step:last-child { border-bottom: none; }
+
+.writing-vocab-section { margin-top: 16px; }
+.writing-vocab-title { font-weight: 600; margin-bottom: 8px; font-size: var(--text-sm); color: var(--gold); }
+.writing-vocab-grid { display: flex; gap: 6px; flex-wrap: wrap; }
+.writing-vocab-chip { padding: 4px 10px; background: rgba(251,191,36,0.1); border-radius: var(--radius-full); font-size: var(--text-xs); color: var(--gold); }
+
+.writing-sample { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 24px; margin-top: 16px; }
+.writing-sample-title { font-weight: 700; margin-bottom: 8px; color: var(--gold); }
+.writing-sample-band { font-size: var(--text-xs); color: var(--text-secondary); margin-bottom: 12px; }
+.writing-sample-text { font-size: var(--text-sm); line-height: 1.8; color: var(--text-secondary); }
+.writing-sample-text p { margin-bottom: 10px; }
+
+.writing-checklist { margin-top: 16px; }
+.writing-checklist-title { font-weight: 600; margin-bottom: 8px; font-size: var(--text-sm); color: var(--success); }
