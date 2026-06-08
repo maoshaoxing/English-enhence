@@ -6,9 +6,9 @@
 
 ### 🎯 一年冲刺 IELTS 7.0
 
-[![GitHub Pages](https://img.shields.io/badge/🌐_在线访问-点击-blue?style=for-the-badge&logo=github)](https://maoshaoxing.github.io/-4-6-/)
-[![Words](https://img.shields.io/badge/📚_词汇量-6,379-green?style=flat-square)](https://maoshaoxing.github.io/-4-6-/)
-[![Modules](https://img.shields.io/badge/🧩_模块-5个-orange?style=flat-square)](https://maoshaoxing.github.io/-4-6-/)
+[![GitHub Pages](https://img.shields.io/badge/🌐_在线访问-点击-blue?style=for-the-badge&logo=github)](https://maoshaoxing.github.io/English-enhence/)
+[![Words](https://img.shields.io/badge/📚_词汇量-6,379-green?style=flat-square)](https://maoshaoxing.github.io/English-enhence/)
+[![Modules](https://img.shields.io/badge/🧩_模块-5个-orange?style=flat-square)](https://maoshaoxing.github.io/English-enhence/)
 [![License](https://img.shields.io/badge/📄_License-MIT-blue?style=flat-square)](LICENSE)
 
 </div>
@@ -51,7 +51,7 @@
 ```bash
 # GitHub Pages
 Settings → Pages → Source: main → Save
-→ https://maoshaoxing.github.io/-4-6-/
+→ https://maoshaoxing.github.io/English-enhence/
 
 # 本地运行
 python -m http.server 3000
